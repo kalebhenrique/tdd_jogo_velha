@@ -3,4 +3,4 @@
 */
 int VerificaVelha( int velha[3][3] );
  
-
+bool verificaDesequilibrioXO(int X, int O);
