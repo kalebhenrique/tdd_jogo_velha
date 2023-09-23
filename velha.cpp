@@ -8,7 +8,7 @@
 /** 
  * @brief  verifica situacao do jogo da velha  
  * @author Kaleb Henrique 
- * @param  velha uma matrix 3x3
+ * @param  velha uma matrix 3x3: 0 => vazio, 1 => jogada X, 2 => jogada O
  * 
  *  Esta função verifica a situacao do jogo da velha e retorna um numero inteiro
  */
@@ -31,8 +31,12 @@ int VerificaVelha(int velha[3][3]) {
         return -2;
     }
 
-    if (verificaVitoriaX(velha)) {
+    if (verificaVitoria(velha, 1)) {
         return 1;
+    }
+
+    if (verificaVitoria(velha, 2)) {
+        return 2;
     }
 
     return -1;
@@ -42,17 +46,17 @@ bool verificaDesequilibrioXO(int X, int O) {
     return X > (O + 1) || (X + 1) < O;
 }
 
-bool verificaVitoriaX(int velha[3][3]) {
-    if (velha[0][0] == 1 && velha[1][1] == 1 && velha[2][2] == 1) {
+bool verificaVitoria(int velha[3][3], int tipoDeVitoria) {
+    if (velha[0][0] == tipoDeVitoria && velha[1][1] == tipoDeVitoria && velha[2][2] == tipoDeVitoria) { // refatorar ifs
         return true;
-    } else if (velha[0][2] == 1 && velha[1][1] == 1 && velha[2][0] == 1) {
+    } else if (velha[0][2] == tipoDeVitoria && velha[1][1] == tipoDeVitoria && velha[2][0] == tipoDeVitoria) {
         return true;
     }
 
     for (int i = 1; i <= 2; i++) {
-        if (velha[0][i] == 1 && velha[1][i] == 1 && velha[2][i] == 1) {
+        if (velha[0][i] == tipoDeVitoria && velha[1][i] == tipoDeVitoria && velha[2][i] == tipoDeVitoria) {
             return true;
-        } else if (velha[i][0] == 1 && velha[i][1] == 1 && velha[i][2] == 1) {
+        } else if (velha[i][0] == tipoDeVitoria && velha[i][1] == tipoDeVitoria && velha[i][2] == tipoDeVitoria) {
             return true;
         }
     }
