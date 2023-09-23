@@ -31,12 +31,8 @@ int VerificaVelha(int velha[3][3]) {
         return -2;
     }
 
-    for (int i = 1; i <= 2; i++) {
-        if (velha[0][i] == 1 && velha[1][i] == 1 && velha[2][i] == 1) {
-            return 1;
-        } else if (velha[i][0] == 1 && velha[i][1] == 1 && velha[i][2] == 1) {
-            return 1;
-        }
+    if (verificaVitoriaX(velha)) {
+        return 1;
     }
 
     return -1;
@@ -44,4 +40,22 @@ int VerificaVelha(int velha[3][3]) {
 
 bool verificaDesequilibrioXO(int X, int O) {
     return X > (O + 1) || (X + 1) < O;
+}
+
+bool verificaVitoriaX(int velha[3][3]) {
+    if (velha[0][0] == 1 && velha[1][1] == 1 && velha[2][2] == 1) {
+        return true;
+    } else if (velha[0][2] == 1 && velha[1][1] == 1 && velha[2][0] == 1) {
+        return true;
+    }
+
+    for (int i = 1; i <= 2; i++) {
+        if (velha[0][i] == 1 && velha[1][i] == 1 && velha[2][i] == 1) {
+            return true;
+        } else if (velha[i][0] == 1 && velha[i][1] == 1 && velha[i][2] == 1) {
+            return true;
+        }
+    }
+
+    return false;
 }
