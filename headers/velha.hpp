@@ -3,6 +3,12 @@
 */
 int VerificaVelha( int velha[3][3] );
  
-bool verificaDesequilibrioXO(int X, int O);
+bool verificaDesequilibrioXO(int velha[3][3]);
 
 bool verificaVitoria(int velha[3][3], int tipoDeVitoria);
+
+bool verificaVitoriaCruzada(int velha[3][3], int tipoDeVitoria);
+
+bool verificaVitoriaEmLinha(int velha[3][3], int tipoDeVitoria, int indexLinha);
+
+bool verificaVitoriaEmColuna(int velha[3][3], int tipoDeVitoria, int indexColuna);

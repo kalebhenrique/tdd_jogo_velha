@@ -14,20 +14,7 @@
  */
 
 int VerificaVelha(int velha[3][3]) {
-    int quantidadeX = 0;
-    int quantidadeO = 0;
-
-    for (int linha = 0; linha <= 2; linha++) { // verificar a estrutura
-        for (int coluna = 0; coluna <= 2; coluna++) {
-            if (velha[linha][coluna] == 1) {
-                quantidadeX++;
-            } else if (velha[linha][coluna] == 2) {
-                quantidadeO++;
-            }
-        }
-    }
-
-    if (verificaDesequilibrioXO(quantidadeX, quantidadeO)) {
+    if (verificaDesequilibrioXO(velha)) {
         return -2;
     }
 
@@ -42,24 +29,53 @@ int VerificaVelha(int velha[3][3]) {
     return -1;
 }
 
-bool verificaDesequilibrioXO(int X, int O) {
-    return X > (O + 1) || (X + 1) < O;
+bool verificaDesequilibrioXO(int velha[3][3]) {
+    int quantidadeX = 0;
+    int quantidadeO = 0;
+
+    for (int linha = 0; linha <= 2; linha++) { // verificar a estrutura
+        for (int coluna = 0; coluna <= 2; coluna++) {
+            if (velha[linha][coluna] == 1) {
+                quantidadeX++;
+            } else if (velha[linha][coluna] == 2) {
+                quantidadeO++;
+            }
+        }
+    }
+
+    return quantidadeX > (quantidadeO + 1) || (quantidadeX + 1) < quantidadeO;
 }
 
 bool verificaVitoria(int velha[3][3], int tipoDeVitoria) {
-    if (velha[0][0] == tipoDeVitoria && velha[1][1] == tipoDeVitoria && velha[2][2] == tipoDeVitoria) { // refatorar ifs
-        return true;
-    } else if (velha[0][2] == tipoDeVitoria && velha[1][1] == tipoDeVitoria && velha[2][0] == tipoDeVitoria) {
+    if (verificaVitoriaCruzada(velha, tipoDeVitoria)) {
         return true;
     }
 
-    for (int i = 1; i <= 2; i++) {
-        if (velha[0][i] == tipoDeVitoria && velha[1][i] == tipoDeVitoria && velha[2][i] == tipoDeVitoria) {
+    for (int index = 1; index <= 2; index++) {
+        if (verificaVitoriaEmLinha(velha, tipoDeVitoria, index)) {
             return true;
-        } else if (velha[i][0] == tipoDeVitoria && velha[i][1] == tipoDeVitoria && velha[i][2] == tipoDeVitoria) {
+        } else if (verificaVitoriaEmColuna(velha, tipoDeVitoria, index)) {
             return true;
         }
     }
 
     return false;
+}
+
+bool verificaVitoriaCruzada(int velha[3][3], int tipoDeVitoria) {
+    if (velha[0][0] == tipoDeVitoria && velha[1][1] == tipoDeVitoria && velha[2][2] == tipoDeVitoria) {
+        return true;
+    } else if (velha[0][2] == tipoDeVitoria && velha[1][1] == tipoDeVitoria && velha[2][0] == tipoDeVitoria) {
+        return true;
+    }
+
+    return false;
+}
+
+bool verificaVitoriaEmLinha(int velha[3][3], int tipoDeVitoria, int indexLinha) {
+    return (velha[0][indexLinha] == tipoDeVitoria) && (velha[1][indexLinha] == tipoDeVitoria) && (velha[2][indexLinha] == tipoDeVitoria);
+}
+
+bool verificaVitoriaEmColuna(int velha[3][3], int tipoDeVitoria, int indexColuna) {
+    return (velha[indexColuna][0] == tipoDeVitoria) && (velha[indexColuna][1] == tipoDeVitoria) && (velha[indexColuna][2] == tipoDeVitoria);
 }
