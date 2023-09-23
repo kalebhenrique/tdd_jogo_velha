@@ -17,7 +17,7 @@ int VerificaVelha(int velha[3][3]) {
     int quantidadeX = 0;
     int quantidadeO = 0;
 
-    for (int linha = 0; linha <= 2; linha++) {
+    for (int linha = 0; linha <= 2; linha++) { // verificar a estrutura
         for (int coluna = 0; coluna <= 2; coluna++) {
             if (velha[linha][coluna] == 1) {
                 quantidadeX++;
@@ -31,7 +31,13 @@ int VerificaVelha(int velha[3][3]) {
         return -2;
     }
 
-    return 0;
+    for (int i = 1; i <= 2; i++) {
+        if (velha[0][i] == 1 && velha[1][i] == 1 && velha[2][i] == 1) {
+            return 1;
+        }
+    }
+
+    return -1;
 }
 
 bool verificaDesequilibrioXO(int X, int O) {
