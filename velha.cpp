@@ -1,9 +1,9 @@
 /**
+ * Copyright [2023] <Kaleb Henrique>
  * \file  velha.cpp
  */
 
- 
-#include "velha.hpp"
+#include "headers/velha.hpp"
 
 /** 
  * @brief verifica situacao do jogo da velha  
@@ -13,9 +13,6 @@
  *  Descrever o que a funcao faz
  */ 
 
-int VerificaVelha( int velha[3][3] )
-{
-	return 0; /*!< retorna zero para teste */
+int VerificaVelha(int velha[3][3]) {
+    return 0; /*!< retorna zero para teste */
 }
-
-
