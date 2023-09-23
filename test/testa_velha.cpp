@@ -22,7 +22,7 @@ TEST_CASE( "Jogo inválido: há desiquilibrio entre X e O", "[single-file]" ) {
 	REQUIRE( VerificaVelha(tudoX) == -2 );
 }
 
-TEST_CASE( "Jogo finalizado: X venceu", "[single-file]" ) {
+TEST_CASE( "Jogo finalizado: X era para ter ganhado", "[single-file]" ) {
 	int vitoriaEmColuna[3][3] = {   { 2, 0, 1 }, 
 									{ 0, 2, 1 },
 									{ 0, 0, 1 }
@@ -31,7 +31,12 @@ TEST_CASE( "Jogo finalizado: X venceu", "[single-file]" ) {
 								   { 1, 1, 1 },
 								   { 0, 0, 0 }
 							   };
+	int vitoriaCruzada[3][3] = {   { 1, 0, 2 }, 
+								   { 0, 1, 2 },
+								   { 0, 0, 1 }
+							   };
 					  
     REQUIRE( VerificaVelha(vitoriaEmColuna) == 1);
 	REQUIRE( VerificaVelha(vitoriaEmLinha) == 1);
+	REQUIRE( VerificaVelha(vitoriaCruzada) == 1);
 }
