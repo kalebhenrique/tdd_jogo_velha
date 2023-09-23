@@ -27,6 +27,11 @@ TEST_CASE( "Jogo finalizado: X venceu", "[single-file]" ) {
 									{ 0, 2, 1 },
 									{ 0, 0, 1 }
 							    };
+	int vitoriaEmLinha[3][3] = {   { 2, 0, 2 }, 
+								   { 1, 1, 1 },
+								   { 0, 0, 0 }
+							   };
 					  
     REQUIRE( VerificaVelha(vitoriaEmColuna) == 1);
+	REQUIRE( VerificaVelha(vitoriaEmLinha) == 1);
 }
