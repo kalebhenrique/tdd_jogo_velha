@@ -21,4 +21,12 @@ TEST_CASE( "Jogo inválido: há desiquilibrio entre X e O", "[single-file]" ) {
     REQUIRE( VerificaVelha(vitoriaInjusta) == -2 );
 	REQUIRE( VerificaVelha(tudoX) == -2 );
 }
- 
+
+TEST_CASE( "Jogo finalizado: X venceu", "[single-file]" ) {
+	int vitoriaEmColuna[3][3] = {   { 2, 0, 1 }, 
+									{ 0, 2, 1 },
+									{ 0, 0, 1 }
+							    };
+					  
+    REQUIRE( VerificaVelha(vitoriaEmColuna) == 1);
+}
