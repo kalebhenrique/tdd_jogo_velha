@@ -33,7 +33,7 @@ bool verificaDesequilibrioXO(int velha[3][3]) {
     int quantidadeX = 0;
     int quantidadeO = 0;
 
-    for (int linha = 0; linha <= 2; linha++) { // verificar a estrutura
+    for (int linha = 0; linha <= 2; linha++) {  // verificar a estrutura
         for (int coluna = 0; coluna <= 2; coluna++) {
             if (velha[linha][coluna] == 1) {
                 quantidadeX++;
@@ -47,14 +47,14 @@ bool verificaDesequilibrioXO(int velha[3][3]) {
 }
 
 bool verificaVitoria(int velha[3][3], int tipoDeVitoria) {
-    if (verificaVitoriaCruzada(velha, tipoDeVitoria)) {
+    if (ganhouCruzado(velha, tipoDeVitoria)) {
         return true;
     }
 
     for (int index = 1; index <= 2; index++) {
-        if (verificaVitoriaEmLinha(velha, tipoDeVitoria, index)) {
+        if (ganhouEmLinha(velha, tipoDeVitoria, index)) {
             return true;
-        } else if (verificaVitoriaEmColuna(velha, tipoDeVitoria, index)) {
+        } else if (ganhouEmColuna(velha, tipoDeVitoria, index)) {
             return true;
         }
     }
@@ -62,20 +62,23 @@ bool verificaVitoria(int velha[3][3], int tipoDeVitoria) {
     return false;
 }
 
-bool verificaVitoriaCruzada(int velha[3][3], int tipoDeVitoria) {
-    if (velha[0][0] == tipoDeVitoria && velha[1][1] == tipoDeVitoria && velha[2][2] == tipoDeVitoria) {
-        return true;
-    } else if (velha[0][2] == tipoDeVitoria && velha[1][1] == tipoDeVitoria && velha[2][0] == tipoDeVitoria) {
-        return true;
-    }
-
-    return false;
+bool ganhouCruzado(int velha[3][3], int tipoDeVitoria) {
+    return (velha[0][0] == tipoDeVitoria &&
+            velha[1][1] == tipoDeVitoria &&
+            velha[2][2] == tipoDeVitoria) ||
+           (velha[0][2] == tipoDeVitoria &&
+            velha[1][1] == tipoDeVitoria &&
+            velha[2][0] == tipoDeVitoria);
 }
 
-bool verificaVitoriaEmLinha(int velha[3][3], int tipoDeVitoria, int indexLinha) {
-    return (velha[0][indexLinha] == tipoDeVitoria) && (velha[1][indexLinha] == tipoDeVitoria) && (velha[2][indexLinha] == tipoDeVitoria);
+bool ganhouEmLinha(int velha[3][3], int tipoDeVitoria, int indexLinha) {
+    return velha[0][indexLinha] == tipoDeVitoria &&
+           velha[1][indexLinha] == tipoDeVitoria &&
+           velha[2][indexLinha] == tipoDeVitoria;
 }
 
-bool verificaVitoriaEmColuna(int velha[3][3], int tipoDeVitoria, int indexColuna) {
-    return (velha[indexColuna][0] == tipoDeVitoria) && (velha[indexColuna][1] == tipoDeVitoria) && (velha[indexColuna][2] == tipoDeVitoria);
+bool ganhouEmColuna(int velha[3][3], int tipoDeVitoria, int indexColuna) {
+    return velha[indexColuna][0] == tipoDeVitoria &&
+           velha[indexColuna][1] == tipoDeVitoria &&
+           velha[indexColuna][2] == tipoDeVitoria;
 }
