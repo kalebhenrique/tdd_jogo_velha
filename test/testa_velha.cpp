@@ -85,11 +85,17 @@ TEST_CASE( "Jogo finalizado: era para ter empatado", "[single-file]" ) {
     REQUIRE( VerificaVelha(empate) == 0 );
 }
 
-TEST_CASE( "Jogo indefinido: o jogo nao acabou", "[single-file]" ) {
+TEST_CASE( "Jogo indefinido: a partida nao acabou", "[single-file]" ) {
 	int apenasUmX[3][3] = {    { 0, 0, 0 }, 
 							   { 0, 1, 0 },
 							   { 0, 0, 0 }
 					      };
+
+	int meioDaPartida[3][3] = {    { 0, 0, 1 }, 
+							       { 2, 1, 0 },
+							       { 2, 0, 1 }
+					          };
 					  
     REQUIRE( VerificaVelha(apenasUmX) == -1 );
+	REQUIRE( VerificaVelha(meioDaPartida) == -1 );
 }	
