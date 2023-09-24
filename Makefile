@@ -4,7 +4,7 @@ all: test/testa_velha.cpp   velha.cpp headers/velha.hpp velha.o
 	./testa_velha
 
 clear:
-	rm -rf *.o *.exe *.gc* testa_velha
+	rm -rf *.rpt *.o *.exe *.gc* testa_velha
 
 compile: test/testa_velha.cpp   velha.cpp headers/velha.hpp velha.o
 	g++ -std=c++11 -Wall velha.o test/testa_velha.cpp -o testa_velha
@@ -37,4 +37,4 @@ cppcheck: test/testa_velha.cpp   velha.cpp headers/velha.hpp
 	cppcheck  --enable=warning .
 
 valgrind: testa_velha
-	valgrind --leak-check=yes --log-file=valgrind.rpt testa_velha
+	valgrind --leak-check=yes --log-file=valgrind.rpt ./testa_velha
