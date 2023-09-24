@@ -3,7 +3,7 @@
 */
 int VerificaVelha( int velha[3][3] );
  
-bool verificaDesequilibrioXO(int velha[3][3]);
+bool verificaDesequilibrioXO(int x, int o);
 
 bool verificaVitoria(int velha[3][3], int tipoDeVitoria);
 

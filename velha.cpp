@@ -16,13 +16,27 @@
 int VerificaVelha(int velha[3][3]) {
     bool vitoriaDeX = false;
     bool vitoriaDeO = false;
-    int quantidadeZeros = 0;
+    int contadorVazio = 0;
+    int contadorX = 0;
+    int contadorO = 0;
 
-    if (verificaDesequilibrioXO(velha)) {
+    for (int linha = 0; linha <= 2; linha++) {  // estrutura ruim O(n^2)
+        for (int coluna = 0; coluna <= 2; coluna++) {
+            if (velha[linha][coluna] == 1) {
+                contadorX++;
+            } else if (velha[linha][coluna] == 2) {
+                contadorO++;
+            } else {
+                contadorVazio++;
+            }
+        }
+    }
+
+    if (verificaDesequilibrioXO(contadorX, contadorO)) {
         return -2;
     }
 
-    vitoriaDeX = verificaVitoria(velha, 1);  // verificar estrutura
+    vitoriaDeX = verificaVitoria(velha, 1);  // estrutura pode ser confusa
     vitoriaDeO = verificaVitoria(velha, 2);
 
     if (vitoriaDeX && vitoriaDeO) {
@@ -31,38 +45,15 @@ int VerificaVelha(int velha[3][3]) {
         return 1;
     } else if (vitoriaDeO) {
         return 2;
-    }
-
-    for (int linha = 0; linha <= 2; linha++) {  // estrutura ruim O(n^2)
-        for (int coluna = 0; coluna <= 2; coluna++) {
-            if (velha[linha][coluna] == 0) {
-                quantidadeZeros++;
-            }
-        }
-    }
-
-    if (quantidadeZeros == 0) {
+    } else if (contadorVazio == 0) {
         return 0;
     }
 
     return -1;
 }
 
-bool verificaDesequilibrioXO(int velha[3][3]) {
-    int quantidadeX = 0;
-    int quantidadeO = 0;
-
-    for (int linha = 0; linha <= 2; linha++) {  // estrutura ruim O(n^2)
-        for (int coluna = 0; coluna <= 2; coluna++) {
-            if (velha[linha][coluna] == 1) {
-                quantidadeX++;
-            } else if (velha[linha][coluna] == 2) {
-                quantidadeO++;
-            }
-        }
-    }
-
-    return quantidadeX > (quantidadeO + 1) || (quantidadeX + 1) < quantidadeO;
+bool verificaDesequilibrioXO(int x, int o) {
+    return x > (o + 1) || (x + 1) < o;
 }
 
 bool verificaVitoria(int velha[3][3], int tipoDeVitoria) {
