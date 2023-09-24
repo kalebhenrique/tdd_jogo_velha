@@ -52,9 +52,9 @@ bool verificaVitoria(int velha[3][3], int tipoDeVitoria) {
     }
 
     for (int index = 1; index <= 2; index++) {
-        if (ganhouEmLinha(velha, tipoDeVitoria, index)) {
+        if (ganhouEmColuna(velha, tipoDeVitoria, index)) {
             return true;
-        } else if (ganhouEmColuna(velha, tipoDeVitoria, index)) {
+        } else if (ganhouEmLinha(velha, tipoDeVitoria, index)) {
             return true;
         }
     }
@@ -71,13 +71,13 @@ bool ganhouCruzado(int velha[3][3], int tipoDeVitoria) {
             velha[2][0] == tipoDeVitoria);
 }
 
-bool ganhouEmLinha(int velha[3][3], int tipoDeVitoria, int indexLinha) {
+bool ganhouEmColuna(int velha[3][3], int tipoDeVitoria, int indexLinha) {
     return velha[0][indexLinha] == tipoDeVitoria &&
            velha[1][indexLinha] == tipoDeVitoria &&
            velha[2][indexLinha] == tipoDeVitoria;
 }
 
-bool ganhouEmColuna(int velha[3][3], int tipoDeVitoria, int indexColuna) {
+bool ganhouEmLinha(int velha[3][3], int tipoDeVitoria, int indexColuna) {
     return velha[indexColuna][0] == tipoDeVitoria &&
            velha[indexColuna][1] == tipoDeVitoria &&
            velha[indexColuna][2] == tipoDeVitoria;
