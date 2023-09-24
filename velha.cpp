@@ -71,14 +71,14 @@ bool ganhouCruzado(int velha[3][3], int tipoDeVitoria) {
             velha[2][0] == tipoDeVitoria);
 }
 
-bool ganhouEmColuna(int velha[3][3], int tipoDeVitoria, int indexLinha) {
-    return velha[0][indexLinha] == tipoDeVitoria &&
-           velha[1][indexLinha] == tipoDeVitoria &&
-           velha[2][indexLinha] == tipoDeVitoria;
+bool ganhouEmColuna(int velha[3][3], int tipoDeVitoria, int indexColuna) {
+    return velha[0][indexColuna] == tipoDeVitoria &&
+           velha[1][indexColuna] == tipoDeVitoria &&
+           velha[2][indexColuna] == tipoDeVitoria;
 }
 
-bool ganhouEmLinha(int velha[3][3], int tipoDeVitoria, int indexColuna) {
-    return velha[indexColuna][0] == tipoDeVitoria &&
-           velha[indexColuna][1] == tipoDeVitoria &&
-           velha[indexColuna][2] == tipoDeVitoria;
+bool ganhouEmLinha(int velha[3][3], int tipoDeVitoria, int indexLinha) {
+    return velha[indexLinha][0] == tipoDeVitoria &&
+           velha[indexLinha][1] == tipoDeVitoria &&
+           velha[indexLinha][2] == tipoDeVitoria;
 }
