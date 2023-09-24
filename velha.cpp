@@ -51,7 +51,7 @@ bool verificaVitoria(int velha[3][3], int tipoDeVitoria) {
         return true;
     }
 
-    for (int index = 1; index <= 2; index++) {
+    for (int index = 0; index <= 2; index++) {
         if (ganhouEmColuna(velha, tipoDeVitoria, index)) {
             return true;
         } else if (ganhouEmLinha(velha, tipoDeVitoria, index)) {
