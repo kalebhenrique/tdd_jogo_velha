@@ -1,7 +1,7 @@
 /**
  * Copyright [2023] <Kaleb Henrique>
 */
-int VerificaVelha( int velha[3][3] );
+int verificaVelha(int velha[3][3]);
  
 bool verificaDesequilibrioXO(int x, int o);
 

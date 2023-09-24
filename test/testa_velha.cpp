@@ -18,8 +18,8 @@ TEST_CASE( "Jogo inválido: há desiquilibrio entre X e O", "[single-file]" ) {
                           { 1, 1, 1 }
                       };
 					  
-    REQUIRE( VerificaVelha(vitoriaInjusta) == -2 );
-    REQUIRE( VerificaVelha(tudoX) == -2 );
+    REQUIRE( verificaVelha(vitoriaInjusta) == -2 );
+    REQUIRE( verificaVelha(tudoX) == -2 );
 }
 
 TEST_CASE( "Jogo finalizado: X era para ter ganhado", "[single-file]" ) {
@@ -42,10 +42,10 @@ TEST_CASE( "Jogo finalizado: X era para ter ganhado", "[single-file]" ) {
                                    { 0, 0, 1 }
                                };
 
-    REQUIRE( VerificaVelha(vitoriaEmColuna) == 1);
-    REQUIRE( VerificaVelha(vitoriaEmColuna2) == 1);
-    REQUIRE( VerificaVelha(vitoriaEmLinha) == 1);
-    REQUIRE( VerificaVelha(vitoriaCruzada) == 1);
+    REQUIRE( verificaVelha(vitoriaEmColuna) == 1);
+    REQUIRE( verificaVelha(vitoriaEmColuna2) == 1);
+    REQUIRE( verificaVelha(vitoriaEmLinha) == 1);
+    REQUIRE( verificaVelha(vitoriaCruzada) == 1);
 }
 
 TEST_CASE( "Jogo finalizado: O era para ter ganhado", "[single-file]" ) {
@@ -62,9 +62,9 @@ TEST_CASE( "Jogo finalizado: O era para ter ganhado", "[single-file]" ) {
                                    { 2, 0, 1 }
                                };
 
-    REQUIRE( VerificaVelha(vitoriaEmColuna) == 2);
-    REQUIRE( VerificaVelha(vitoriaEmLinha) == 2);
-    REQUIRE( VerificaVelha(vitoriaCruzada) == 2);
+    REQUIRE( verificaVelha(vitoriaEmColuna) == 2);
+    REQUIRE( verificaVelha(vitoriaEmLinha) == 2);
+    REQUIRE( verificaVelha(vitoriaCruzada) == 2);
 }
 
 TEST_CASE( "Jogo inválido: há dois vencedores", "[single-file]" ) {
@@ -73,7 +73,7 @@ TEST_CASE( "Jogo inválido: há dois vencedores", "[single-file]" ) {
                                     { 1, 0, 2 }
                                };
 					  
-    REQUIRE( VerificaVelha(doisVencedores) == -2 );
+    REQUIRE( verificaVelha(doisVencedores) == -2 );
 }
 
 TEST_CASE( "Jogo finalizado: era para ter empatado", "[single-file]" ) {
@@ -82,7 +82,7 @@ TEST_CASE( "Jogo finalizado: era para ter empatado", "[single-file]" ) {
                             { 1, 1, 2 }
                        };
 					  
-    REQUIRE( VerificaVelha(empate) == 0 );
+    REQUIRE( verificaVelha(empate) == 0 );
 }
 
 TEST_CASE( "Jogo indefinido: a partida nao acabou", "[single-file]" ) {
@@ -96,6 +96,6 @@ TEST_CASE( "Jogo indefinido: a partida nao acabou", "[single-file]" ) {
                                    { 2, 0, 1 }
                               };
 					  
-    REQUIRE( VerificaVelha(apenasUmX) == -1 );
-    REQUIRE( VerificaVelha(meioDaPartida) == -1 );
+    REQUIRE( verificaVelha(apenasUmX) == -1 );
+    REQUIRE( verificaVelha(meioDaPartida) == -1 );
 }	

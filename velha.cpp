@@ -9,18 +9,24 @@
  * @brief  verifica situacao do jogo da velha  
  * @author Kaleb Henrique 
  * @param  velha uma matrix 3x3: 0 => vazio, 1 => jogada X, 2 => jogada O
+ * @return um numero inteiro que pertence ao intervalo [-2,2]
  * 
- *  Esta função verifica a situacao do jogo da velha e retorna um numero inteiro
+ *  Esta função verifica a situacao do jogo da velha e retorna um numero inteiro:
+ *  -2 => jogo impossivel
+ *  -1 => jogo indefinido
+ *   0 => empate
+ *   1 => vitoria de X
+ *   2 => vitoria de O
  */
 
-int VerificaVelha(int velha[3][3]) {
-    bool vitoriaDeX = false;
-    bool vitoriaDeO = false;
+int verificaVelha(int velha[3][3]) {
     int contadorVazio = 0;
     int contadorX = 0;
     int contadorO = 0;
+    bool vitoriaDeX;
+    bool vitoriaDeO;
 
-    for (int linha = 0; linha <= 2; linha++) {  // estrutura ruim O(n^2)
+    for (int linha = 0; linha <= 2; linha++) {
         for (int coluna = 0; coluna <= 2; coluna++) {
             if (velha[linha][coluna] == 1) {
                 contadorX++;
@@ -36,7 +42,7 @@ int VerificaVelha(int velha[3][3]) {
         return -2;
     }
 
-    vitoriaDeX = verificaVitoria(velha, 1);  // estrutura pode ser confusa
+    vitoriaDeX = verificaVitoria(velha, 1);
     vitoriaDeO = verificaVitoria(velha, 2);
 
     if (vitoriaDeX && vitoriaDeO) {
