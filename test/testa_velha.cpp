@@ -75,3 +75,12 @@ TEST_CASE( "Jogo inválido: há dois vencedores", "[single-file]" ) {
 					  
     REQUIRE( VerificaVelha(doisVencedores) == -2 );
 }
+
+TEST_CASE( "Jogo finalizado: era para ter empatado", "[single-file]" ) {
+	int empate[3][3] = {    { 1, 1, 2 }, 
+							{ 2, 2, 1 },
+							{ 1, 1, 2 }
+					   };
+					  
+    REQUIRE( VerificaVelha(empate) == 0 );
+}
