@@ -27,6 +27,12 @@ TEST_CASE( "Jogo finalizado: X era para ter ganhado", "[single-file]" ) {
 									{ 0, 2, 1 },
 									{ 0, 0, 1 }
 							    };
+
+	int vitoriaEmColuna2[3][3] = {   { 1, 0, 2 }, 
+									 { 1, 0, 2 },
+									 { 1, 0, 0 }
+							     };
+
 	int vitoriaEmLinha[3][3] = {   { 2, 0, 2 }, 
 								   { 1, 1, 1 },
 								   { 0, 0, 0 }
@@ -37,6 +43,7 @@ TEST_CASE( "Jogo finalizado: X era para ter ganhado", "[single-file]" ) {
 							   };
 					  
     REQUIRE( VerificaVelha(vitoriaEmColuna) == 1);
+	REQUIRE( VerificaVelha(vitoriaEmColuna2) == 1);
 	REQUIRE( VerificaVelha(vitoriaEmLinha) == 1);
 	REQUIRE( VerificaVelha(vitoriaCruzada) == 1);
 }
