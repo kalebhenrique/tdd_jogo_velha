@@ -16,6 +16,7 @@
 int VerificaVelha(int velha[3][3]) {
     bool vitoriaDeX = false;
     bool vitoriaDeO = false;
+    int quantidadeZeros = 0;
 
     if (verificaDesequilibrioXO(velha)) {
         return -2;
@@ -32,6 +33,18 @@ int VerificaVelha(int velha[3][3]) {
         return 2;
     }
 
+    for (int linha = 0; linha <= 2; linha++) {  // estrutura ruim O(n^2)
+        for (int coluna = 0; coluna <= 2; coluna++) {
+            if (velha[linha][coluna] == 0) {
+                quantidadeZeros++;
+            }
+        }
+    }
+
+    if (quantidadeZeros == 0) {
+        return 0;
+    }
+
     return -1;
 }
 
@@ -39,7 +52,7 @@ bool verificaDesequilibrioXO(int velha[3][3]) {
     int quantidadeX = 0;
     int quantidadeO = 0;
 
-    for (int linha = 0; linha <= 2; linha++) {  // verificar a estrutura
+    for (int linha = 0; linha <= 2; linha++) {  // estrutura ruim O(n^2)
         for (int coluna = 0; coluna <= 2; coluna++) {
             if (velha[linha][coluna] == 1) {
                 quantidadeX++;
