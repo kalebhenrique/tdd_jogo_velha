@@ -66,3 +66,12 @@ TEST_CASE( "Jogo finalizado: O era para ter ganhado", "[single-file]" ) {
 	REQUIRE( VerificaVelha(vitoriaEmLinha) == 2);
 	REQUIRE( VerificaVelha(vitoriaCruzada) == 2);
 }
+
+TEST_CASE( "Jogo inválido: há dois vencedores", "[single-file]" ) {
+	int doisVencedores[3][3] = {    { 1, 0, 2 }, 
+									{ 1, 0, 2 },
+									{ 1, 0, 2 }
+							   };
+					  
+    REQUIRE( VerificaVelha(doisVencedores) == -2 );
+}
