@@ -14,15 +14,21 @@
  */
 
 int VerificaVelha(int velha[3][3]) {
+    bool vitoriaDeX = false;
+    bool vitoriaDeO = false;
+
     if (verificaDesequilibrioXO(velha)) {
         return -2;
     }
 
-    if (verificaVitoria(velha, 1)) {
-        return 1;
-    }
+    vitoriaDeX = verificaVitoria(velha, 1);  // verificar estrutura
+    vitoriaDeO = verificaVitoria(velha, 2);
 
-    if (verificaVitoria(velha, 2)) {
+    if (vitoriaDeX && vitoriaDeO) {
+        return -2;
+    } else if (vitoriaDeX) {
+        return 1;
+    } else if (vitoriaDeO) {
         return 2;
     }
 
